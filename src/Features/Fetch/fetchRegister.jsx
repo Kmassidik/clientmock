@@ -19,7 +19,7 @@ export default function FetchRegister(){
   }
 
   if (error) {
-    return <div>Error:</div>
+    return <div>Error: {error.message}</div>
   }
 
   if (data.success) {

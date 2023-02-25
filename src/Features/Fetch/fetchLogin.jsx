@@ -18,8 +18,8 @@ export default function FetchLogin(){
     return <div>Loading...</div>
   }
 
-  if (data.error) {
-    return <div>Error: { data.error }</div>
+  if (error) {
+    return <div>Error: { error.message }</div>
   }
 
   if (data.success) {
