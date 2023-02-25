@@ -4,7 +4,7 @@ import { fetchLogin } from './fetchData'
 
 export default function FetchLogin(){
   const dispatch = useDispatch()
-  const { data, isLoading, error } = useSelector(state => state.fetchData)
+  const { data, isLoading } = useSelector(state => state.fetchData)
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')

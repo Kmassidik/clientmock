@@ -8,7 +8,6 @@ export default function Fetch(){
 
   useEffect(() => {
     dispatch(fetchData())
-    // dispatch(fetchData('http://localhost:3001/api'))
   }, [dispatch])
 
   if (isLoading) {
@@ -23,9 +22,9 @@ export default function Fetch(){
     <div>
       {data.map(post => (
         <div key={post.id}>
-          {/* <p>{post.todo} - {post.completed ? <p>true</p> : <p>false</p>} - {post.username}</p> */}
-          <h3>{post.title}</h3>
-          <p>{post.body}</p>
+          <p>{post.todo}</p>
+          {/* <h3>{post.title}</h3> */}
+          {/* <p>{post.body}</p> */}
         </div>
       ))}
     </div>

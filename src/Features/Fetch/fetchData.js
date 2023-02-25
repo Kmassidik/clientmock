@@ -28,7 +28,7 @@ export const { getDataStart, getDataSuccess, getDataFail } = slice.actions
 export const fetchData = () => async dispatch => {
   dispatch(getDataStart())
   try {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
+    const response = await axios.get('http://localhost:3001/api/list/333')
     dispatch(getDataSuccess(response.data))
   } catch (error) {
     dispatch(getDataFail(error))
@@ -57,11 +57,20 @@ export const fetchRegister = ({ username, password }) => async dispatch => {
 export const fetchAddTodo = ({ todolist, username }) => async dispatch => {
   dispatch(getDataStart())
   try {
-    const response = await axios.post('http://localhost:3001/api/addTodo', { todolist, username })
+    const response = await axios.post('http://localhost:3001/api/addTodo', { username, todolist })
     dispatch(getDataSuccess(response.data))
   } catch (error) {
     dispatch(getDataFail(error))
   }
 }
+// export const fetchDataTodo = () => async dispatch => {
+//   dispatch(getDataStart())
+//   try {
+//     const response = await axios.get('http://localhost:3001/api/list/333')
+//     dispatch(getDataSuccess(response.data))
+//   } catch (error) {
+//     dispatch(getDataFail(error))
+//   }
+// }
 
 export default slice.reducer
