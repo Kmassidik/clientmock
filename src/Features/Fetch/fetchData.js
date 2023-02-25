@@ -45,4 +45,23 @@ export const fetchLogin = ({ username, password }) => async dispatch => {
   }
 }
 
+export const fetchRegister = ({ username, password }) => async dispatch => {
+  dispatch(getDataStart())
+  try {
+    const response = await axios.post('http://localhost:3001/api/register', { username, password })
+    dispatch(getDataSuccess(response.data))
+  } catch (error) {
+    dispatch(getDataFail(error))
+  }
+}
+export const fetchAddTodo = ({ todolist, username }) => async dispatch => {
+  dispatch(getDataStart())
+  try {
+    const response = await axios.post('http://localhost:3001/api/addTodo', { todolist, username })
+    dispatch(getDataSuccess(response.data))
+  } catch (error) {
+    dispatch(getDataFail(error))
+  }
+}
+
 export default slice.reducer
