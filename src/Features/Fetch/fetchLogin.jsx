@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { fetchLogin } from './fetchData'
 
 export default function FetchLogin(){
   const dispatch = useDispatch()
-  const { data, isLoading } = useSelector(state => state.fetchData)
+  const { data, isLoading, error } = useSelector(state => state.fetchData)
 
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const navigate = useNavigate()
 
   const handleSubmit = event => {
     event.preventDefault()
     dispatch(fetchLogin({ username, password }))
+    localStorage.setItem("access",username)
   }
 
   if (isLoading) {
@@ -23,9 +26,8 @@ export default function FetchLogin(){
   }
 
   if (data.success) {
-    return <div>Login successful!</div>
+    window.location.href= './'
   }
-
   return (
     <form onSubmit={handleSubmit}>
       <label>

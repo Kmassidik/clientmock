@@ -8,7 +8,7 @@ export default function Fetch(){
 
   useEffect(() => {
     dispatch(fetchData())
-  }, [dispatch])
+  }, [])
 
   if (isLoading) {
     return <div>Loading...</div>

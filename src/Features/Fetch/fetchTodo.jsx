@@ -5,8 +5,6 @@ import { fetchAddTodo } from './fetchData'
 export default function FetchTodo(){
   const dispatch = useDispatch()
   const { data, isLoading, error } = useSelector(state => state.fetchData)
-
-  // const [username, setUsername] = useState('333')
   const [todolist, settodo] = useState('')
   const handleSubmit = event => {
     event.preventDefault()
