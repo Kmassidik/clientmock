@@ -1,23 +1,20 @@
 import './App.css';
-import {Counter} from './Features/Counter/counter'
-import {NameChanger} from './Features/NameChanger/name'
-import { Login } from "./Pages";
-import ToDoList from './Pages/ToDoList';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { TestFetch, Login, Register, Home } from "./Pages";
+
 function App() {
   return (
     <div className="App">
-      <div>
-        <Counter/>
-      </div>
-      <div>
-        <NameChanger/>
-      </div>
-      <div>
-        <Login/>
-      </div>
-      <div>
-        <ToDoList/>
-      </div>
+       <BrowserRouter>
+      {/* <Navbar /> */}
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/Login" element={<Login />} />
+          <Route exact path="/Register" element={<Register />} />
+          <Route exact path="/test" element={<TestFetch />} />
+        </Routes>
+      {/* <Footer /> */}
+      </BrowserRouter>
     </div>
   );
 }
