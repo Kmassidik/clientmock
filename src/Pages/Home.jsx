@@ -21,7 +21,9 @@ export default function Home(){
     },[auth])
     return(
         <>
-            <button onClick={handleLogout}>logout</button>
+        <div>
+            hello {storage} <button onClick={handleLogout}>logout</button>
+        </div>
             <FetchTodo user={storage}/>
                 <br/>
             <Fetch user={storage}/>

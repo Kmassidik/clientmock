@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { TestFetch, Login, Register, Home } from "./Pages";
+import { Login, Register, Home } from "./Pages";
 
 function App() {
   return (
@@ -11,7 +11,6 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/Login" element={<Login />} />
           <Route exact path="/Register" element={<Register />} />
-          <Route exact path="/test" element={<TestFetch />} />
         </Routes>
       {/* <Footer /> */}
       </BrowserRouter>

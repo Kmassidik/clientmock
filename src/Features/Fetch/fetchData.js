@@ -57,19 +57,18 @@ export const fetchAddTodo = ({ todolist, username }) => async dispatch => {
   dispatch(getDataStart())
   try {
     await axios.post('http://localhost:3001/api/addTodo', { username, todolist })
-    // dispatch(fetchData())
+    dispatch(fetchData())
   } catch (error) {
     dispatch(getDataFail(error))
   }
 }
-// export const fetchDataTodo = () => async dispatch => {
-//   dispatch(getDataStart())
-//   try {
-//     const response = await axios.get('http://localhost:3001/api/list/333')
-//     dispatch(getDataSuccess(response.data))
-//   } catch (error) {
-//     dispatch(getDataFail(error))
-//   }
-// }
+export const fetchDataTodo = ({username, id}) => async dispatch => {
+  dispatch(getDataStart())
+  try {
+    await axios.put(`http://localhost:3001/api/list/${username}/${id}`)
+  } catch (error) {
+    dispatch(getDataFail(error))
+  }
+}
 
 export default slice.reducer

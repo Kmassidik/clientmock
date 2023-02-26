@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 import { fetchRegister } from './fetchData'
 
 export default function FetchRegister(){
@@ -18,15 +19,8 @@ export default function FetchRegister(){
     return <div>Loading...</div>
   }
 
-  if (error) {
-    return <div>Error: {error.message}</div>
-  }
-
-  if (data.success) {
-    return <div>Register successful!</div>
-  }
-
   return (
+    <>
     <form onSubmit={handleSubmit}>
       <label>
         Username:
@@ -39,6 +33,9 @@ export default function FetchRegister(){
       </label>
       <br />
       <button type="submit">Register</button>
+      <div>back to&nbsp;<NavLink to='/Login'>Login</NavLink></div>
     </form>
+    {error && <>Your Username Has been Register</>}
+    </>
   )
 }
