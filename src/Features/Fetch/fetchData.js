@@ -25,10 +25,10 @@ export const slice = createSlice({
 
 export const { getDataStart, getDataSuccess, getDataFail } = slice.actions
 
-export const fetchData = () => async dispatch => {
+export const fetchData = ({username}) => async dispatch => {
   dispatch(getDataStart())
   try {
-    const response = await axios.get('http://localhost:3001/api/list/333')
+    const response = await axios.get(`http://localhost:3001/api/list/${username}`)
     dispatch(getDataSuccess(response.data))
   } catch (error) {
     dispatch(getDataFail(error))
@@ -44,7 +44,6 @@ export const fetchLogin = ({ username, password }) => async dispatch => {
     dispatch(getDataFail(error))
   }
 }
-
 export const fetchRegister = ({ username, password }) => async dispatch => {
   dispatch(getDataStart())
   try {
@@ -57,8 +56,8 @@ export const fetchRegister = ({ username, password }) => async dispatch => {
 export const fetchAddTodo = ({ todolist, username }) => async dispatch => {
   dispatch(getDataStart())
   try {
-    const response = await axios.post('http://localhost:3001/api/addTodo', { username, todolist })
-    dispatch(getDataSuccess(response.data))
+    await axios.post('http://localhost:3001/api/addTodo', { username, todolist })
+    // dispatch(fetchData())
   } catch (error) {
     dispatch(getDataFail(error))
   }

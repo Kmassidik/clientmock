@@ -2,25 +2,25 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAddTodo } from './fetchData'
 
-export default function FetchTodo(){
+export default function FetchTodo(el){
   const dispatch = useDispatch()
   const { data, isLoading, error } = useSelector(state => state.fetchData)
   const [todolist, settodo] = useState('')
   const handleSubmit = event => {
     event.preventDefault()
-    dispatch(fetchAddTodo({ username : '333', todolist }))
+    dispatch(fetchAddTodo({ username : el.user, todolist }))
   }
 
   if (isLoading) {
-    return <div>Loading...</div>
+    <p>Loading...</p>
   }
 
   if (error) {
-    return <div>Error:</div>
+    <p>Error:</p>
   }
 
   if (data.success) {
-    return <div>list add successful!</div>
+    <p>list add successful!</p>
   }
 
   return (
