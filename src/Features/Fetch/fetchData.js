@@ -28,7 +28,7 @@ export const { getDataStart, getDataSuccess, getDataFail } = slice.actions
 export const fetchData = ({username}) => async dispatch => {
   dispatch(getDataStart())
   try {
-    const response = await axios.get(`http://localhost:3001/api/list/${username}`)
+    const response = await axios.get(`https://real-red-gecko-cuff.cyclic.app/api/list/${username}`)
     dispatch(getDataSuccess(response.data))
   } catch (error) {
     dispatch(getDataFail(error))
@@ -38,7 +38,7 @@ export const fetchData = ({username}) => async dispatch => {
 export const fetchLogin = ({ username, password }) => async dispatch => {
   dispatch(getDataStart())
   try {
-    const response = await axios.post('http://localhost:3001/api/login', { username, password })
+    const response = await axios.post('https://real-red-gecko-cuff.cyclic.app/api/login', { username, password })
     dispatch(getDataSuccess(response.data))
   } catch (error) {
     dispatch(getDataFail(error))
@@ -47,7 +47,7 @@ export const fetchLogin = ({ username, password }) => async dispatch => {
 export const fetchRegister = ({ username, password }) => async dispatch => {
   dispatch(getDataStart())
   try {
-    const response = await axios.post('http://localhost:3001/api/register', { username, password })
+    const response = await axios.post('https://real-red-gecko-cuff.cyclic.app/api/register', { username, password })
     dispatch(getDataSuccess(response.data))
   } catch (error) {
     dispatch(getDataFail(error))
@@ -56,7 +56,7 @@ export const fetchRegister = ({ username, password }) => async dispatch => {
 export const fetchAddTodo = ({ todolist, username }) => async dispatch => {
   dispatch(getDataStart())
   try {
-    await axios.post('http://localhost:3001/api/addTodo', { username, todolist })
+    await axios.post('https://real-red-gecko-cuff.cyclic.app/api/addTodo', { username, todolist })
     dispatch(fetchData())
   } catch (error) {
     dispatch(getDataFail(error))
@@ -65,7 +65,7 @@ export const fetchAddTodo = ({ todolist, username }) => async dispatch => {
 export const fetchDataTodo = ({username, id}) => async dispatch => {
   dispatch(getDataStart())
   try {
-    await axios.put(`http://localhost:3001/api/list/${username}/${id}`)
+    await axios.put(`https://real-red-gecko-cuff.cyclic.app/${username}/${id}`)
   } catch (error) {
     dispatch(getDataFail(error))
   }
