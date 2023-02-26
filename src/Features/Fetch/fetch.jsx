@@ -7,11 +7,11 @@ export default function Fetch(el){
   const dispatch = useDispatch()
   const { data, isLoading, error } = useSelector(state => state.fetchData)
 
-  // dispatch(fetchData({username : el.user}))
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const check = () => {
     dispatch(fetchData({username : el.user}))
   }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const checkData = () => {
     if (data !== undefined){
       return Set(false)
@@ -24,7 +24,7 @@ export default function Fetch(el){
       checkData()
     }, 3000);
     return () => clearTimeout(timer)
-  },[check])
+  },[check, checkData])
 
   return (
     <>
