@@ -65,7 +65,7 @@ export const fetchAddTodo = ({ todolist, username }) => async dispatch => {
 export const fetchDataTodo = ({username, id}) => async dispatch => {
   dispatch(getDataStart())
   try {
-    await axios.put(`https://real-red-gecko-cuff.cyclic.app/${username}/${id}`)
+    await axios.put(`https://real-red-gecko-cuff.cyclic.app/api/list/${username}/${id}`)
   } catch (error) {
     dispatch(getDataFail(error))
   }
